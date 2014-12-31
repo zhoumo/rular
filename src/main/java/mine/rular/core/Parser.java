@@ -1,6 +1,8 @@
 package mine.rular.core;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +24,11 @@ public class Parser {
 	private static Document getDocument() {
 		if (document == null) {
 			try {
-				document = new SAXReader().read(new File(Parser.class.getResource("/suite.xml").getFile()));
+				try {
+					document = new SAXReader().read(new FileInputStream("suite.xml"));
+				} catch (FileNotFoundException e) {
+					document = new SAXReader().read(new File(Parser.class.getResource("/suite.xml").getFile()));
+				}
 			} catch (DocumentException e) {
 				e.printStackTrace();
 			}
