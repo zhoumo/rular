@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="测试用例" xmlns="mine/rular">
+	<setting active="true" browser-type="FIREFOX" browser-path="C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"></setting>
+	<setting browser-type="IE" browser-path="C:\\IEDriverServer.exe"></setting>
+	<setting browser-type="NONE" browser-path="E:\\phantomjs-1.9.7\\phantomjs.exe"></setting>
+	<case name="百度搜索测试">
+		<steps>
+			<step type="OPEN" name="打开百度首页" value="http://www.baidu.com"></step>
+			<step type="INPUT" name="在搜索框中输入test" xpath="//input[@name='wd']" value="test"></step>
+			<step type="CLICK" name="点击搜索按钮" xpath="//input[@id='su']"></step>
+		</steps>
+		<assert name="搜索结果大于10条" xpath="//a" size-gt="10"></assert>
+	</case>
+</suite>
